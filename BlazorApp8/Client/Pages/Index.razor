@@ -1,0 +1,43 @@
+﻿@page "/"
+@inject IOrderService  OrderService
+
+@using System.Xml.Serialization
+@using System.IO
+@using System.Xml
+
+
+<BlazorApp8.Client.Controls.OrderComponent></BlazorApp8.Client.Controls.OrderComponent>
+<div class="form-group">
+    <input @bind="xmlData" />
+</div>
+<button @onclick="Parse">Przycisk</button>
+@code
+{
+    private string xmlData;
+    private readonly IOrderService _orderService;
+
+
+
+    public void Parse()
+    {
+        string a = xmlData;
+
+        OrderDto b = ParseXml(a);
+
+        OrderService.CreateOrder(b);
+
+
+}
+
+    public OrderDto ParseXml(string xmlData)
+    {
+        OrderDto a;
+        var xmlSerializer = new XmlSerializer(typeof(OrderDto));
+        using (var textReader = new StringReader(xmlData))
+        {
+            a = (OrderDto)xmlSerializer.Deserialize(textReader);
+        }
+        return a;
+    }
+}
+

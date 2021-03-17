@@ -1,0 +1,145 @@
+﻿
+@inject IOrderService  OrderService
+
+
+
+<h3>OrderComponent</h3>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Addres Delivery
+        </th>
+        <th>
+            OrderId
+        </th>
+        <th>
+            CommodityCode
+        </th>
+        <th>
+            ProductName
+        </th>
+        <th>
+            Volume
+        </th>
+        <th>
+            FullNameDriver
+        </th>
+
+        <th>
+            Phone Driver
+        </th>
+        <th>
+            Email Driver
+        </th>
+        <th>
+            FullNameCustomer
+        </th>
+        <th>
+            Adress Customer
+        </th>
+        <th>
+            Phone Cusomer
+        </th>
+        <th>
+            EmailCustomer
+        </th>
+        <th>
+            Sent No
+        </th>
+        <th>
+            SentRecipentKey
+        </th>
+        <th>
+            SentCarrierKay
+        </th>
+        <th>
+            SellerVehicle
+        </th>
+        <th>
+            PaymentDate
+        </th>
+        <th>
+            FullNamePayer
+        </th>
+        <th>
+            AddressPayer
+        </th>
+    </tr>
+    @foreach (var item in OrderService.Orders)
+    {
+        <tr>
+            <th>
+                @item.AddressDelivery
+            </th>
+            <th>
+                @item.OrderId
+            </th>
+            <th>
+                @item.CommodityCode
+            </th>
+            <th>
+                @item.ProductName
+            </th>
+            <th>
+                @item.Volume
+            </th>
+            <th>
+                @item.FullNameDriver
+            </th>
+
+            <th>
+                @item.PhoneDriver
+            </th>
+            <th>
+                @item.EmailDriver
+            </th>
+            <th>
+                @item.FullNameCustomer
+            </th>
+            <th>
+                @item.AddressCustomer
+            </th>
+            <th>
+                @item.PhoneCustomer
+            </th>
+            <th>
+                @item.EmailCustomer
+            </th>
+            <th>
+                @item.SentNo
+            </th>
+            <th>
+                @item.SentRecipentKey
+            </th>
+            <th>
+                @item.SentCarrierKey
+            </th>
+            <th>
+                @item.SellerVehicle
+            </th>
+            <th>
+                @item.PaymentDate
+            </th>
+            <th>
+                @item.FullNamePayer
+            </th>
+            <th>
+                @item.AddressPayer
+            </th>
+        </tr>
+    }
+</table>
+
+@code {     
+
+
+
+    protected override void OnInitialized()
+    {
+        OrderService.LoadOrders();
+    }
+
+}
